@@ -45,7 +45,7 @@ if cereal_beans == "beans":
   print("Will you clean up and be late or leave the mess for someone else?\n")
   time.sleep(1)
   
-# choice cereal | normal
+# decision 1 | beans or cereal
   
 if cereal_beans == "cereal":
   print("You eat a nice full bowl of cereal and are ready for the day!")
@@ -73,9 +73,29 @@ while True:
     break
   print("\nInvalid Choice! Try again\n")
   
-if bike_bus == "bike":
-  print("\n You take off for school on your bike, only 15 minutes til school")
+# decision 3 | cry or walk it off
   
+if bike_bus == "bike":
+  print("\n You take off for school on your bike, only 15 minutes til school\n")
+  time.sleep[2]
+  print("Your almost at school but...\n")
+  time.sleep(2)
+  print("Your suddenly THROWN off your bike \n")
+  time.sleep(1.5)
+  print("You messed up your knee pretty bad")
+
+  while True:
+    print("Are you gonna cry, or walk it off")
+    time.sleep(0.5)
+    print("[1][2]")
+    time.sleep(0.5)
+    bike_bus = input("\n> ").lower()
+    if bike_bus in ["1", "2"]:
+      break
+    print("\nInvalid Choice! Try again\n")
+  
+# 
+
 if bike_bus == "bus":
   print("\nGreat choice! The bus should be here any minute now\n")
   time.sleep(2)
@@ -91,7 +111,8 @@ if bike_bus == "bus":
     time.sleep(0.5)
     print("[1][2]")
     time.sleep(0.5)
-    bike_bus = input("\n> ").lower()
-    if bike_bus in ["1", "2"]:
+    bus = input("\n> ").lower()
+    if bus in ["1", "2"]:
       break
     print("\nInvalid Choice! Try again\n")
+    
