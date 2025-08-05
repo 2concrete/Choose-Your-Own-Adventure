@@ -1,118 +1,271 @@
 import time
 
-# intro
+def get_choice(prompt, options):
+    while True:
+        print(f"\n{prompt} {options}\n")
+        choice = input("> ").strip().lower()
+        if choice in options:
+            return choice
+        print("\nInvalid Choice! Try again\n")
 
-print("\nWelcome to your first day of highschool\n")
-time.sleep(1)
-print("It's time for a new era\n")
-time.sleep(1)
-print("What's your name?\n")
-time.sleep(0.5)
-
-name = input("> ").capitalize()
-
-print(f"\nWell {name}, let's get started\n")
-time.sleep(1)
-print(f"What will you have for breakfast?\n")
-time.sleep(1)
-
-# decision 1 | cereal or beans
-
-while True:
-  print(f"Cereal or beans?")  
-  time.sleep(0.5)
-  cereal_beans = input("\n> ").lower()
-  if cereal_beans in ["beans", "cereal"]:
-    print(f"\n{cereal_beans.capitalize()} it is!\n")
+def intro():
+    print("\nWelcome to your first day of highschool\n")
     time.sleep(1)
-    break
-  print("\nInvalid Choice! Try again\n")
-
-  print(f"\n{cereal_beans.capitalize()} it is!\n")
-  time.sleep(1)
-
-# choice beans | explosion
-
-if cereal_beans == "beans":
-  print("You go to heat up the beans, put them in the microwave, and a minute in...\n")
-  time.sleep(3)
-  print("The can EXPLODES! and the microwave BURSTS open\n")
-  time.sleep(2)
-  print("Theres beans all over the kitchen\n")
-  time.sleep(2)
-  print("Your gonna be late for school if you don't leave now!\n")
-  time.sleep(2)
-  print("Will you clean up and be late or leave the mess for someone else?\n")
-  time.sleep(1)
-  
-# decision 1 | beans or cereal
-  
-if cereal_beans == "cereal":
-  print("You eat a nice full bowl of cereal and are ready for the day!")
-  
-if cereal_beans == "beans":
-  while True:
-    print("Clean or Leave\n") 
+    print("\nIt's time for a new era\n")
+    time.sleep(1)
+    print("\nWhat's your name?\n")
     time.sleep(0.5)
-    clean_leave = input("> ").lower()
-    if clean_leave in ["clean", "leave"]:
-      break
-    print("\nInvalid Choice! Try again\n")
-  
-# decision 2 | bike or bus
+    name = input("> ").capitalize()
+    print(f"\nWell {name}, let's get started\n")
+    time.sleep(1)
+    return name
 
-time.sleep(1)
-print("\nNow, how are you going to get to school?\n")
-time.sleep(1)
+def breakfast():
+    return get_choice("What will you have for breakfast?", ["cereal", "beans"])
 
-while True:
-  print("You can bike or get the bus")  
-  time.sleep(0.5)
-  bike_bus = input("\n> ").lower()
-  if bike_bus in ["bike", "bus"]:
-    break
-  print("\nInvalid Choice! Try again\n")
-  
-# decision 3 | cry or walk it off
-  
-if bike_bus == "bike":
-  print("\n You take off for school on your bike, only 15 minutes til school\n")
-  time.sleep[2]
-  print("Your almost at school but...\n")
-  time.sleep(2)
-  print("Your suddenly THROWN off your bike \n")
-  time.sleep(1.5)
-  print("You messed up your knee pretty bad")
+def beans():
+    print("\nYou go to heat up the beans, put them in the microwave, and a minute in...\n")
+    time.sleep(3)
+    print("\nThe can EXPLODES! and the microwave BURSTS open\n")
+    time.sleep(2)
+    print("\nTheres beans all over the kitchen\n")
+    time.sleep(2)
+    print("\nYour gonna be late for school if you don't leave now!\n")
+    time.sleep(2)
+    return get_choice("Will you clean up and be late or leave the mess for someone else?", ["clean", "leave"])
 
-  while True:
-    print("Are you gonna cry, or walk it off")
-    time.sleep(0.5)
-    print("[1][2]")
-    time.sleep(0.5)
-    bike_bus = input("\n> ").lower()
-    if bike_bus in ["1", "2"]:
-      break
-    print("\nInvalid Choice! Try again\n")
-  
-# 
+def cereal():
+    print("\nYou eat a nice full bowl of cereal and are ready for the day!\n")
 
-if bike_bus == "bus":
-  print("\nGreat choice! The bus should be here any minute now\n")
-  time.sleep(2)
-  print("The bus is here, you get on, but where are you going to sit?\n")
-  time.sleep(2)
-  print("It seems like the cool kids are at the back, but theres someone sitting by himself\n")
-  time.sleep(2)
-  print("He looks a bit sad\n")
-  time.sleep(1)
-  
-  while True:
-    print("Sit with the cool kids, or sit with the guy by himself?")  
-    time.sleep(0.5)
-    print("[1][2]")
-    time.sleep(0.5)
-    bus = input("\n> ").lower()
-    if bus in ["1", "2"]:
-      break
-    print("\nInvalid Choice! Try again\n")
-    
+def clean():
+    time.sleep(1)
+    print("\nIt takes 30 minutes to clean up\n")
+    time.sleep(1)
+    print("\nEvery thing is spotless\n")
+    time.sleep(1)
+    print("\nBut now you really better get going\n")
+    time.sleep(1)
+
+def leave():
+    print("\nWell, its time to go\n")
+    time.sleep(1)
+    print("\nYou can take the bike or get the bus\n")
+    time.sleep(1)
+    return get_choice("bike or bus?", ["bike", "bus"])
+
+def bike():
+    print("\nYou take off for school on your bike, only 15 minutes til school\n")
+    time.sleep(2)
+    print("\nYou're almost at school but...\n")
+    time.sleep(2)
+    print("\nYou're suddenly THROWN off your bike \n")
+    time.sleep(1.5)
+    print("\nYou messed up your knee pretty bad\n")
+    return get_choice("Are you gonna cry, or walk it off", ["clean", "walk"])
+
+def bus():
+    print("\nThe bus should be here any minute now\n")
+    time.sleep(2)
+    print("\nThe bus is here, you get on, but where are you going to sit?\n")
+    time.sleep(2)
+    print("\nIt seems like the cool kids are at the back, but theres someone sitting by himself\n")
+    time.sleep(2)
+    print("\nHe looks a bit sad\n")
+    time.sleep(1)
+    return get_choice("Are you going to sit with the cool kids, or the kid by himself?", ["cool", "alone"])
+
+def fall_off_bike():
+    print("\nYou fall off your bike and hurt your knee.\n")
+    time.sleep(1)
+    choice = get_choice("Are you going to cry or walk it off?", ["cry", "walk"])
+    if choice == "cry":
+        return get_bullied()
+    else:
+        return gain_confidence()
+
+def get_bullied():
+    print("\nSome kids see you crying and start to bully you.\n")
+    time.sleep(1)
+    choice = get_choice("Tell a teacher or stay quiet?", ["tell a teacher", "stay quiet"])
+    if choice == "tell a teacher":
+        print("\nThe teacher tells off the bullies and helps you.\n")
+        time.sleep(1)
+        print("\nYou feel safer at school now.\n")
+    else:
+        print("\nYou stay quiet and go home early, feeling sad.\n")
+        time.sleep(1)
+        print("\nRemember, it's always okay to ask for help!\n")
+
+def gain_confidence():
+    print("\nYou walk it off and feel proud of yourself.\n")
+    time.sleep(1)
+    choice = get_choice("Try out for the sports team or start a club?", ["team", "club"])
+    if choice == "team":
+        print("\nYou make it onto the team and learn teamwork!\n")
+        time.sleep(1)
+    else:
+        print("\nYou start a club and make new friends with similar interests.\n")
+        time.sleep(1)
+
+def bus_path():
+    choice = bus()
+    if choice == "cool":
+        become_popular()
+    else:
+        good_friends()
+
+def become_popular():
+    print("\nYou sit with the cool kids and become popular.\n")
+    time.sleep(1)
+    choice = get_choice("Sneak out of school or stay for class?", ["sneak out", "stay at school"])
+    if choice == "sneak out":
+        print("\nYou get caught and have to talk to the principal about choices.\n")
+        time.sleep(1)
+    else:
+        print("\nEveryone gets caught skipping class and learns a lesson about honesty.\n")
+        time.sleep(1)
+
+def good_friends():
+    print("\nYou sit with the loner and become good friends.\n")
+    time.sleep(1)
+    choice = get_choice("Start a band or study together?", ["band", "study"])
+    if choice == "band":
+        print("\nYou win the school talent show and learn about creativity!\n")
+        time.sleep(1)
+    else:
+        print("\nYou ace your exams and learn the value of teamwork and hard work.\n")
+        time.sleep(1)
+
+def help_teacher():
+    print("\nYou see a teacher struggling with books.\n")
+    time.sleep(1)
+    choice = get_choice("Will you help or ignore?", ["help", "ignore"])
+    if choice == "help":
+        print("\nThe teacher thanks you and you feel good about helping others.\n")
+        time.sleep(1)
+        ending_kindness()
+    else:
+        print("\nYou walk away, but later wish you had helped.\n")
+        time.sleep(1)
+        ending_reflection()
+
+def library_path():
+    print("\nYou have free time before class.\n")
+    time.sleep(1)
+    choice = get_choice("Go to the library or hang in the hallway?", ["library", "hallway"])
+    if choice == "library":
+        print("\nYou read a book and learn something new.\n")
+        time.sleep(1)
+        ending_learning()
+    else:
+        print("\nYou chat with friends but miss out on learning.\n")
+        time.sleep(1)
+        ending_reflection()
+
+def lost_item():
+    print("\nYou find a lost wallet in the hallway.\n")
+    time.sleep(1)
+    choice = get_choice("Return it or keep it?", ["return", "keep"])
+    if choice == "return":
+        print("\nYou return it and the owner is grateful.\n")
+        time.sleep(1)
+        ending_honesty()
+    else:
+        print("\nYou keep it but feel guilty all day.\n")
+        time.sleep(1)
+        ending_guilt()
+
+def group_project():
+    print("\nYou are assigned a group project.\n")
+    time.sleep(1)
+    choice = get_choice("Do all the work or share tasks?", ["all", "share"])
+    if choice == "all":
+        print("\nYou get tired and stressed. Sharing is better.\n")
+        time.sleep(1)
+        ending_teamwork()
+    else:
+        print("\nYou share tasks and finish quickly. Teamwork helps!\n")
+        time.sleep(1)
+        ending_teamwork()
+
+def lunch_time():
+    print("\nIt's lunch time.\n")
+    time.sleep(1)
+    choice = get_choice("Eat alone or join others?", ["alone", "join"])
+    if choice == "alone":
+        print("\nYou feel lonely. It's good to make friends.\n")
+        time.sleep(1)
+        ending_reflection()
+    else:
+        print("\nYou make new friends and enjoy lunch.\n")
+        time.sleep(1)
+        ending_friendship()
+
+def ending_kindness():
+    print("\nEnding 1: You learned kindness is important.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_learning():
+    print("\nEnding 2: You learned the value of learning.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_teamwork():
+    print("\nEnding 3: You learned teamwork is key.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_friendship():
+    print("\nEnding 1: You learned friendship matters.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_honesty():
+    print("\nEnding 2: You learned honesty is best.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_guilt():
+    print("\nEnding 3: You learned guilt is not worth it.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def ending_reflection():
+    print("\nEnding 1: You learned to reflect on your choices.\n")
+    time.sleep(1)
+    print("\nTHE END\n")
+    exit()
+
+def main():
+    name = intro()
+    cereal_beans = breakfast()
+    if cereal_beans == "beans":
+        clean_leave = beans()
+        if clean_leave == "clean":
+            clean()
+            bike_bus = leave()
+        else:
+            bike_bus = leave()
+    else:
+        cereal()
+        bike_bus = leave()
+
+    if bike_bus == "bike":
+        fall_off_bike()
+        help_teacher()
+    elif bike_bus == "bus":
+        bus_path()
+        library_path()
+
+    lost_item()
+    group_project()
+    lunch_time()
+
+main()
