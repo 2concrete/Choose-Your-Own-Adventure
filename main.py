@@ -1,12 +1,15 @@
 import time
 
+# Player stats dictionary
 stats = {
     "happiness": 5
 }
 
+# Display current stats
 def show_stats():
     print(f"\n[Stats] Happiness: {stats['happiness']}/10\n")
 
+# Get a valid choice from the user
 def get_choice(prompt, options):
     while True:
         print(f"\n{prompt} {options}\n")
@@ -16,6 +19,7 @@ def get_choice(prompt, options):
             return choice
         print("\nInvalid Choice! Try again\n")
 
+# Game introduction and get player's name
 def intro():
     print("\nWelcome to your first day of highschool\n")
     time.sleep(1)
@@ -28,9 +32,11 @@ def intro():
     time.sleep(1)
     return name
 
+# Ask what the player wants for breakfast
 def breakfast():
     return get_choice("What will you have for breakfast?", ["cereal", "beans"])
 
+# Beans breakfast path
 def beans():
     print("\nYou go to heat up the beans, put them in the microwave, and a minute in...\n")
     time.sleep(3)
@@ -42,13 +48,16 @@ def beans():
     time.sleep(2)
     stats["happiness"] -= 1
     show_stats()
+    # Player chooses to clean or leave the mess
     return get_choice("Will you clean up and be late or leave the mess for someone else?", ["clean", "leave"])
 
+# Cereal breakfast path
 def cereal():
     print("\nYou eat a nice full bowl of cereal and are ready for the day!\n")
     stats["happiness"] += 1
     show_stats()
 
+# Clean up the beans mess
 def clean():
     time.sleep(1)
     print("\nIt takes 30 minutes to clean up\n")
@@ -60,6 +69,7 @@ def clean():
     stats["happiness"] += 1
     show_stats()
 
+# Choose transportation: bike or bus
 def leave():
     print("\nWell, its time to go\n")
     time.sleep(1)
@@ -68,6 +78,7 @@ def leave():
     show_stats()
     return get_choice("bike or bus?", ["bike", "bus"])
 
+# Bike path: accident scenario
 def bike():
     print("\nYou take off for school on your bike, only 15 minutes til school\n")
     time.sleep(2)
@@ -78,8 +89,10 @@ def bike():
     print("\nYou messed up your knee pretty bad\n")
     stats["happiness"] -= 2
     show_stats()
+    # Player chooses how to react to the accident
     return get_choice("Are you gonna cry, or walk it off", ["clean", "walk"])
 
+# Bus path: choose where to sit
 def bus():
     print("\nThe bus should be here any minute now\n")
     time.sleep(2)
@@ -90,8 +103,10 @@ def bus():
     print("\nHe looks a bit sad\n")
     time.sleep(1)
     show_stats()
+    # Player chooses who to sit with
     return get_choice("Are you going to sit with the cool kids, or the kid by himself?", ["cool", "alone"])
 
+# Handle falling off the bike
 def fall_off_bike():
     print("\nYou fall off your bike and hurt your knee.\n")
     time.sleep(1)
@@ -102,6 +117,7 @@ def fall_off_bike():
     else:
         return gain_confidence()
 
+# If player cries, they get bullied
 def get_bullied():
     print("\nSome kids see you crying and start to bully you.\n")
     time.sleep(1)
@@ -121,6 +137,7 @@ def get_bullied():
         stats["happiness"] -= 1
         show_stats()
 
+# If player walks it off, they gain confidence
 def gain_confidence():
     print("\nYou walk it off and feel proud of yourself.\n")
     time.sleep(1)
@@ -138,6 +155,7 @@ def gain_confidence():
         stats["happiness"] += 1
         show_stats()
 
+# Handle bus path choices
 def bus_path():
     choice = bus()
     if choice == "cool":
@@ -145,6 +163,7 @@ def bus_path():
     else:
         good_friends()
 
+# If player sits with cool kids
 def become_popular():
     print("\nYou sit with the cool kids and become popular.\n")
     time.sleep(1)
@@ -162,6 +181,7 @@ def become_popular():
         stats["happiness"] -= 1
         show_stats()
 
+# If player sits with the loner
 def good_friends():
     print("\nYou sit with the loner and become good friends.\n")
     time.sleep(1)
@@ -179,6 +199,7 @@ def good_friends():
         stats["happiness"] += 1
         show_stats()
 
+# Player sees a teacher struggling
 def help_teacher():
     print("\nYou see a teacher struggling with books.\n")
     time.sleep(1)
@@ -197,6 +218,7 @@ def help_teacher():
         show_stats()
         ending_reflection()
 
+# Player chooses how to spend free time before class
 def library_path():
     print("\nYou have free time before class.\n")
     time.sleep(1)
@@ -215,6 +237,7 @@ def library_path():
         show_stats()
         ending_reflection()
 
+# Player finds a lost wallet
 def lost_item():
     print("\nYou find a lost wallet in the hallway.\n")
     time.sleep(1)
@@ -233,6 +256,7 @@ def lost_item():
         show_stats()
         ending_guilt()
 
+# Group project scenario
 def group_project():
     print("\nYou are assigned a group project.\n")
     time.sleep(1)
@@ -251,6 +275,7 @@ def group_project():
         show_stats()
         ending_teamwork()
 
+# Lunch time scenario
 def lunch_time():
     print("\nIt's lunch time.\n")
     time.sleep(1)
@@ -269,6 +294,7 @@ def lunch_time():
         show_stats()
         ending_friendship()
 
+# Various ending functions
 def ending_kindness():
     print("\nEnding 1: You learned kindness is important.\n")
     show_stats()
@@ -318,6 +344,7 @@ def ending_reflection():
     print("\nTHE END\n")
     exit()
 
+# Main game flow
 def main():
     name = intro()
     cereal_beans = breakfast()
