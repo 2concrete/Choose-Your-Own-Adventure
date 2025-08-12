@@ -47,7 +47,6 @@ def beans():
     print("\nYour gonna be late for school if you don't leave now!\n")
     time.sleep(2)
     stats["happiness"] -= 1
-    show_stats()
     # Player chooses to clean or leave the mess
     return get_choice("Will you clean up and be late or leave the mess for someone else?", ["clean", "leave"])
 
@@ -55,7 +54,6 @@ def beans():
 def cereal():
     print("\nYou eat a nice full bowl of cereal and are ready for the day!\n")
     stats["happiness"] += 1
-    show_stats()
 
 # Clean up the beans mess
 def clean():
@@ -67,7 +65,6 @@ def clean():
     print("\nBut now you really better get going\n")
     time.sleep(1)
     stats["happiness"] += 1
-    show_stats()
 
 # Choose transportation: bike or bus
 def leave():
@@ -75,7 +72,7 @@ def leave():
     time.sleep(1)
     print("\nYou can take the bike or get the bus\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     return get_choice("bike or bus?", ["bike", "bus"])
 
 # Bike path: accident scenario
@@ -88,7 +85,6 @@ def bike():
     time.sleep(1.5)
     print("\nYou messed up your knee pretty bad\n")
     stats["happiness"] -= 2
-    show_stats()
     # Player chooses how to react to the accident
     return get_choice("Are you gonna cry, or walk it off", ["clean", "walk"])
 
@@ -102,7 +98,7 @@ def bus():
     time.sleep(2)
     print("\nHe looks a bit sad\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     # Player chooses who to sit with
     return get_choice("Are you going to sit with the cool kids, or the kid by himself?", ["cool", "alone"])
 
@@ -110,7 +106,7 @@ def bus():
 def fall_off_bike():
     print("\nYou fall off your bike and hurt your knee.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Are you going to cry or walk it off?", ["cry", "walk"])
     if choice == "cry":
         return get_bullied()
@@ -122,7 +118,6 @@ def get_bullied():
     print("\nSome kids see you crying and start to bully you.\n")
     time.sleep(1)
     stats["happiness"] -= 2
-    show_stats()
     choice = get_choice("Tell a teacher or stay quiet?", ["tell a teacher", "stay quiet"])
     if choice == "tell a teacher":
         print("\nThe teacher tells off the bullies and helps you.\n")
@@ -142,7 +137,6 @@ def gain_confidence():
     print("\nYou walk it off and feel proud of yourself.\n")
     time.sleep(1)
     stats["happiness"] += 2
-    show_stats()
     choice = get_choice("Try out for the sports team or start a club?", ["team", "club"])
     if choice == "team":
         print("\nYou make it onto the team and learn teamwork!\n")
@@ -168,7 +162,6 @@ def become_popular():
     print("\nYou sit with the cool kids and become popular.\n")
     time.sleep(1)
     stats["happiness"] += 2
-    show_stats()
     choice = get_choice("Sneak out of school or stay for class?", ["sneak out", "stay at school"])
     if choice == "sneak out":
         print("\nYou get caught and have to talk to the principal about choices.\n")
@@ -186,7 +179,6 @@ def good_friends():
     print("\nYou sit with the loner and become good friends.\n")
     time.sleep(1)
     stats["happiness"] += 2
-    show_stats()
     choice = get_choice("Start a band or study together?", ["band", "study"])
     if choice == "band":
         print("\nYou win the school talent show and learn about creativity!\n")
@@ -203,7 +195,7 @@ def good_friends():
 def help_teacher():
     print("\nYou see a teacher struggling with books.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Will you help or ignore?", ["help", "ignore"])
     if choice == "help":
         print("\nThe teacher thanks you and you feel good about helping others.\n")
@@ -222,7 +214,7 @@ def help_teacher():
 def library_path():
     print("\nYou have free time before class.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Go to the library or hang in the hallway?", ["library", "hallway"])
     if choice == "library":
         print("\nYou read a book and learn something new.\n")
@@ -241,7 +233,7 @@ def library_path():
 def lost_item():
     print("\nYou find a lost wallet in the hallway.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Return it or keep it?", ["return", "keep"])
     if choice == "return":
         print("\nYou return it and the owner is grateful.\n")
@@ -260,7 +252,7 @@ def lost_item():
 def group_project():
     print("\nYou are assigned a group project.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Do all the work or share tasks?", ["all", "share"])
     if choice == "all":
         print("\nYou get tired and stressed. Sharing is better.\n")
@@ -279,7 +271,7 @@ def group_project():
 def lunch_time():
     print("\nIt's lunch time.\n")
     time.sleep(1)
-    show_stats()
+    # show_stats() removed to avoid duplicate display
     choice = get_choice("Eat alone or join others?", ["alone", "join"])
     if choice == "alone":
         print("\nYou feel lonely. It's good to make friends.\n")
